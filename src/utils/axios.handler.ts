@@ -1,15 +1,15 @@
 import { AxiosError } from 'axios';
 import { toast } from 'react-toastify';
-import { DogsApiErrorResponse, DogsApiResponse } from "../interfaces/dogsApi.interface";
+import { DogsApiErrorResponse, DogsApiImagesResponse, DogsApiListResponse } from "../interfaces/dogsApi.interface";
 import { axiosSuccess, genericApiError } from "./constants";
 
 export class AxiosHandler {
 
-    public static validateStatus = (response: DogsApiResponse): boolean => {
+    public static validateStatus = (response: DogsApiListResponse | DogsApiImagesResponse): boolean => {
         return (response.status && response.status === axiosSuccess) ? true : false;
     }
 
-    private validateMessage = (error: DogsApiErrorResponse) => {
+    private validateMessage = (error: DogsApiErrorResponse): string => {
         return (error && error.message && error.message.length > 0) ? error.message : genericApiError;
     }
 

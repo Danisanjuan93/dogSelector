@@ -1,5 +1,10 @@
-export interface DogsApiResponse {
+export interface DogsApiListResponse {
     message: { [key: string]: string[]},
+    status: string
+}
+
+export interface DogsApiImagesResponse {
+    message: string[],
     status: string
 }
 
