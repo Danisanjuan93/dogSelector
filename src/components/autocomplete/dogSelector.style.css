@@ -1,3 +1,7 @@
 .custom-margin {
     margin: 3em 0 0 5em;
 }
+
+.custom-button {
+    margin: 1vh !important;
+}
