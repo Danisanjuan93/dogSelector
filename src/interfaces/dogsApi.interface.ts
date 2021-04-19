@@ -1,10 +1,12 @@
+import { DogsImages, DogsList } from "./dog.interface";
+
 export interface DogsApiListResponse {
-    message: { [key: string]: string[]},
+    message: DogsList,
     status: string
 }
 
 export interface DogsApiImagesResponse {
-    message: string[],
+    message: DogsImages,
     status: string
 }
 

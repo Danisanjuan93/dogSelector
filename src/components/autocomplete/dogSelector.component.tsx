@@ -34,18 +34,18 @@ const DogSelector = (): JSX.Element => {
 	};
 
 	return (
-		<Grid container spacing={2}>
+		<Grid container>
 			<Grid container className="custom-margin">
 				<Grid item xs={10}>
 					<Autocomplete
 						onChange={(_event, value): void => setSelectedDogBreed(value)}
 						options={Object.keys(dogsBreeds)}
 						getOptionLabel={(option: string): string => option}
-						renderInput={(params): JSX.Element => <TextField {...params} label="Combo box" variant="outlined" />}
+						renderInput={(params): JSX.Element => <TextField {...params} label="Seleccione una raza" variant="outlined" />}
 					/>
 				</Grid>
-				<Grid item xs={1}>
-					<Button onClick={handleOnSearchButton}>Buscar</Button>
+				<Grid item xs={1} className="custom-button">
+					<Button variant="contained" color="primary" onClick={handleOnSearchButton}>Buscar</Button>
 				</Grid>
 			</Grid>
 			{
