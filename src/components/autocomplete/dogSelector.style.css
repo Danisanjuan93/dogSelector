@@ -5,3 +5,7 @@
 .custom-button {
     margin: 1vh !important;
 }
+
+.full-container {
+    height: 100vh;
+}

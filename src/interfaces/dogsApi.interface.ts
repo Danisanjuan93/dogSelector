@@ -1,4 +1,4 @@
-import { DogsImages, DogsList } from "./dog.interface";
+import { DogsList } from "./dog.interface";
 
 export interface DogsApiListResponse {
     message: DogsList,
@@ -6,7 +6,7 @@ export interface DogsApiListResponse {
 }
 
 export interface DogsApiImagesResponse {
-    message: DogsImages,
+    message: string[],
     status: string
 }
 
