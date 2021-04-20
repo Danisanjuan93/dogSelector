@@ -1,0 +1,41 @@
+.image-gallery {
+    width: 100%;
+}
+
+.image-gallery-thumbnails {
+    overflow-x: scroll;
+}
+
+.image-gallery-slides .image-gallery-image {
+    width: 100%;
+    height: auto;
+    max-height: 60vh !important;
+}
+
+.image-gallery-thumbnail img {
+    width: auto;
+    height: auto;
+}
+
+.image-gallery-swipe {
+    max-height: 60vh;
+    min-height: 60vh;
+}
+
+.fullscreen .image-gallery-thumbnails-wrapper {
+    height: 100vh !important;
+}
+
+.fullscreen .image-gallery-thumbnails {
+    overflow-y: scroll;
+}
+
+.fullscreen .image-gallery-slide img {
+    height: 100vh;
+}
+
+.align-breeds-text {
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}

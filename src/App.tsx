@@ -1,25 +1,23 @@
+import axios from 'axios';
 import React from 'react';
-import logo from './logo.svg';
+import { useTranslation } from 'react-i18next';
+import "react-image-gallery/styles/css/image-gallery.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+import './i18n';
+import { setupInterceptorsTo } from './interceptor/axios.interceptor';
+import { HomePage } from './pages/homePage';
+import TranslationContext from './utils/translation.context';
 
-function App() {
+const App = (): JSX.Element => {
+  setupInterceptorsTo(axios);
+  const TFuntion = TranslationContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TFuntion.Provider value={{ translator: useTranslation().t }}>
+      <ToastContainer></ToastContainer>
+      <HomePage />
+    </TFuntion.Provider>
   );
 }
 
