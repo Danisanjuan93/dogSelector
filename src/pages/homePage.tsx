@@ -6,12 +6,13 @@ import DogBreedCarousel from "../components/carousel/dogBreedCarousel.component"
 import { DogsImages, DogsList } from "../interfaces/dog.interface";
 import { DogsApi } from "../services/dogsApi.service";
 import { spinnerColor, spinnerCss } from "../utils/constants";
+import { parseDogsImagesResponse } from "../utils/utils.utils";
 
 export const HomePage = (): JSX.Element => {
 
     const [dogsBreeds, setDogsBreeds] = React.useState<DogsList>({});
     const [selectedDogBreed, setSelectedDogBreed] = React.useState<string | null>(null);
-    const [dogsBreedsImages, setDogsBreedsImages] = React.useState<DogsImages[]>([]);
+    const [dogsBreedsImages, setDogsBreedsImages] = React.useState<DogsImages>({ breeds: [], images: [] });
     const [loading, setLoading] = React.useState<boolean>(true);
 
     const dogsApi: DogsApi = new DogsApi();
@@ -29,11 +30,7 @@ export const HomePage = (): JSX.Element => {
         if (selectedDogBreed) {
             setLoading(true);
             const response = await dogsApi.getDogsBreedsImages(selectedDogBreed);
-            if (response) {
-                const dogsImages: DogsImages[] = [];
-                response.message.map((url: string) => dogsImages.push({ original: url, thumbnail: url }));
-                setDogsBreedsImages(dogsImages);
-            }
+            response && setDogsBreedsImages(parseDogsImagesResponse(dogsBreeds[selectedDogBreed], response.message));
             setLoading(false);
         }
     };
@@ -41,7 +38,7 @@ export const HomePage = (): JSX.Element => {
     return (
         <Grid container className="full-container">
             <DogSelector loading={loading} dogsBreeds={dogsBreeds} setSelectedDogBreed={setSelectedDogBreed} handleOnSearchButton={handleOnSearchButton} />
-            { dogsBreedsImages.length > 0 && <DogBreedCarousel images={dogsBreedsImages} />}
+            { dogsBreedsImages.images.length > 0 && <DogBreedCarousel images={dogsBreedsImages} />}
             <BounceLoader color={spinnerColor} loading={loading} css={spinnerCss} size={150} />
         </Grid>
     )
