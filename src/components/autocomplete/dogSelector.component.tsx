@@ -1,6 +1,7 @@
 import { Button, Grid, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { BounceLoader } from "react-spinners";
 import { DogsImages, DogsList } from "../../interfaces/dog.interface";
 import { DogsApi } from "../../services/dogsApi.service";
@@ -13,6 +14,7 @@ const DogSelector = (): JSX.Element => {
 	const [selectedDogBreed, setSelectedDogBreed] = React.useState<string | null>(null);
 	const [dogsBreedsImages, setDogsBreedsImages] = React.useState<DogsImages[]>([]);
 	const [loading, setLoading] = React.useState<boolean>(true);
+	const { t } = useTranslation();
 
 	const dogsApi: DogsApi = new DogsApi();
 
@@ -49,7 +51,7 @@ const DogSelector = (): JSX.Element => {
 						onChange={(_event, value): void => setSelectedDogBreed(value)}
 						options={Object.keys(dogsBreeds)}
 						getOptionLabel={(option: string): string => option}
-						renderInput={(params): JSX.Element => <TextField {...params} label="Seleccione una raza" variant="outlined" />}
+						renderInput={(params): JSX.Element => <TextField {...params} label={t("autoCompleteLabel")} variant="outlined" />}
 					/>
 				</Grid>
 				<Grid item xs={1} className="custom-button">
