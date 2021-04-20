@@ -1,3 +1,4 @@
 {
-    "autoCompleteLabel": "Select a dog Breed"
+    "autoCompleteLabel": "Select a dog Breed",
+    "searchButtonLabel": "Search"
 }
