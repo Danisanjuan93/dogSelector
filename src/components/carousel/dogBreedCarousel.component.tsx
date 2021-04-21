@@ -10,6 +10,7 @@ const DogBreedCarousel = (props: { images: DogsImages }): JSX.Element => {
     const handleScreenChange = (fullScreen: boolean): void => {
         setThumbnailPosition(fullScreen ? "left" : "bottom");
     }
+
     const ref = useRef<ImageGallery>(null);
 
     useEffect(() => {
