@@ -6,7 +6,7 @@ import DogBreedCarousel from "../components/carousel/dogBreedCarousel.component"
 import { DogsImages, DogsList } from "../interfaces/dog.interface";
 import { DogsApi } from "../services/dogsApi.service";
 import { spinnerColor, spinnerCss } from "../utils/constants";
-import { parseDogsImagesResponse } from "../utils/utils.utils";
+import { rejectSearchRequest, parseDogsImagesResponse } from "../utils/utils.utils";
 
 export const HomePage = (): JSX.Element => {
 
@@ -27,7 +27,7 @@ export const HomePage = (): JSX.Element => {
     }, []);
 
     const handleOnSearchButton = async (): Promise<void> => {
-        if (selectedDogBreed) {
+        if (selectedDogBreed && !rejectSearchRequest(dogsBreedsImages, selectedDogBreed)) {
             setLoading(true);
             const response = await dogsApi.getDogsBreedsImages(selectedDogBreed);
             response && setDogsBreedsImages(parseDogsImagesResponse(dogsBreeds[selectedDogBreed], response.message));
