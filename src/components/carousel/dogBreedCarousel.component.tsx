@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import ImageGallery, { ReactImageGalleryProps } from 'react-image-gallery';
 import { DogsImages } from "../../interfaces/dog.interface";
+import TranslationContext from "../../utils/translation.context";
 import "./dogBreedCarousel.style.css";
 
 const DogBreedCarousel = (props: { images: DogsImages }): JSX.Element => {
@@ -12,6 +13,7 @@ const DogBreedCarousel = (props: { images: DogsImages }): JSX.Element => {
     }
 
     const ref = useRef<ImageGallery>(null);
+    const { translator } = React.useContext(TranslationContext());
 
     useEffect(() => {
         props.images.images.length > 0 && ref.current?.slideToIndex(0);
@@ -28,7 +30,7 @@ const DogBreedCarousel = (props: { images: DogsImages }): JSX.Element => {
     return (
         <>
             <div className="align-breeds-text">
-                {props.images.breeds.length > 0 && <h3>Mostrando: {props.images.breeds.join(', ')}</h3>}
+                {props.images.breeds.length > 0 && <div><h3 className="inline-content">{translator("breedsh3")}:</h3>   {props.images.breeds.join(', ')}</div>}
             </div>
             <ImageGallery ref={ref} {...options} />
         </>
