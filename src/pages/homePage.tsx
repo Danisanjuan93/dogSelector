@@ -38,7 +38,7 @@ export const HomePage = (): JSX.Element => {
     return (
         <Grid container className="full-container">
             <DogSelector loading={loading} dogsBreeds={dogsBreeds} setSelectedDogBreed={setSelectedDogBreed} handleOnSearchButton={handleOnSearchButton} />
-            { dogsBreedsImages.images.length > 0 && <DogBreedCarousel images={dogsBreedsImages} />}
+            { (dogsBreedsImages.images.length > 0 && !loading) && <DogBreedCarousel images={dogsBreedsImages} />}
             <BounceLoader color={spinnerColor} loading={loading} css={spinnerCss} size={150} />
         </Grid>
     )
