@@ -39,3 +39,7 @@
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.inline-content {
+    display: contents;
+}
