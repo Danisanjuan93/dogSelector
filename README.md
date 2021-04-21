@@ -4,6 +4,9 @@ Desarrolle una aplicación en React que disponga de un Select/Combo que nos perm
  
 A pesar de que se trate de una aplicación sencilla, se valorarán aspectos como: correcta organización de ficheros (cada lógica donde corresponda); componentización adecuada; utilizar las características de las últimas versiones de React (hooks); gestionar correctamente feedback de carga de datos y gestión errores (para informar al usuario en todo momento de cuando se producen cargas de datos o errores en procesamientos); dotar a la aplicación de soporte para múltiples idiomas (para los literales de la aplicación, no para las respuestas del servicio, obviamente); etc.
 
+### Netlify - Url
+https://elegant-liskov-f0c280.netlify.app
+
 ### Tecnologías utilizadas
 Como framework de desarrollo se ha utilizado React.
 
